@@ -2,7 +2,16 @@ var fs = require("fs");
 var { Pool } = require("pg");
 
 module.exports = async (bot) => {
-  const db = new Pool();
+  //   const db = new Pool();
+  const db = new Pool({
+    connectionString: process.env.DB_CONNECTION_STRING,
+    host: process.env.PGHOST,
+    user: process.env.PGUSER,
+    password: process.env.PGPASSWORD,
+    max: 20,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 2000,
+  });
 
   await db.query(`
 		CREATE TABLE IF NOT EXISTS profiles (

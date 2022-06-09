@@ -7,7 +7,7 @@ class CommandHandler {
 		this.bot = bot;
 
 		this.bot.once('ready', () => {
-			this.load(__dirname + "/../../common/commands");
+			this.load(__dirname + "/common/commands");
 			console.log('Commands loaded!')
 		})
 	}
